@@ -8,8 +8,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./registrationpage.component.css']
 })
 export class RegistrationPageComponent {
+email: any;
+emailError: string = ''; 
 
-  constructor(private _http: HttpClient, private router: Router) { } // Inject HttpClient
+
+  constructor(private _http: HttpClient, private router: Router) { } 
   name: string = '';
   userpassword: string = ''
   confirmPassword: string = '';
@@ -19,8 +22,7 @@ export class RegistrationPageComponent {
     const userData = {
       name: this.name,
       password: this.userpassword,
-      repeatPassword: this.confirmPassword,
-      role: 'USER'
+      repeatPassword: this.confirmPassword
     };
 
     const url = `http://localhost:8080/api/register`;
@@ -46,6 +48,26 @@ export class RegistrationPageComponent {
 
   }
 
+  // register() {
+  //   if (!this.isEmailValid(this.email)) {
+  //     this.emailError = 'Invalid email format';
+  //     return; 
+  //   }
+  //     if (this.userpassword !== this.confirmPassword) {
+  //       this.emailError = 'Passwords do not match.';
+  //     } else {
+  //       this.emailError = ''; 
+  //     }
+  //   }  
+
+  // isEmailValid(email: string): boolean {
+  //   const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
+  //   return emailRegex.test(email);
+  // }
+
+  // clearEmailError() {
+  //   this.emailError = '';
+  // }
 }
 
  

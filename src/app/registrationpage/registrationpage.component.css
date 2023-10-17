@@ -45,3 +45,12 @@ button {
 button:hover {
     background-color: #0056b3;
 }
+
+/* Add this CSS in your .css or .scss file */
+.error-message {
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    color: red;
+    font-size: 14px; /* You can adjust the font size as needed */
+  }
+  
