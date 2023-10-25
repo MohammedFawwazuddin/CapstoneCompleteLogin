@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs';
 
- 
+
 
 @Injectable({
 
@@ -13,9 +13,9 @@ import { Observable } from 'rxjs';
 
 })
 
- 
 
- 
+
+
 
 export class AuthInterceptorService implements HttpInterceptor {
 
@@ -33,7 +33,7 @@ export class AuthInterceptorService implements HttpInterceptor {
 
     // Clone the request and add the token to the headers if it exists
 
- 
+
 
     if (token) {
 

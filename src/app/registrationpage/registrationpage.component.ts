@@ -36,38 +36,38 @@ emailError: string = '';
 
     this._http.post(url, userData, { responseType: 'text' }).subscribe({
       next: (response) => {
-        console.log(userData.name),
+        console.log(userData.name);
         console.log('User registered successfully:', response);
         this.router.navigate(['/login']);
       },
-
       error: (error) => {
         console.error('Error registering user:', error);
       }
     });
+    
 
   }
 
-  // register() {
-  //   if (!this.isEmailValid(this.email)) {
-  //     this.emailError = 'Invalid email format';
-  //     return; 
-  //   }
-  //     if (this.userpassword !== this.confirmPassword) {
-  //       this.emailError = 'Passwords do not match.';
-  //     } else {
-  //       this.emailError = ''; 
-  //     }
-  //   }  
+  register() {
+    if (!this.isEmailValid(this.email)) {
+      this.emailError = 'Invalid email format';
+      return; 
+    }
+      if (this.userpassword !== this.confirmPassword) {
+        this.emailError = 'Passwords do not match.';
+      } else {
+        this.emailError = ''; 
+      }
+    }  
 
-  // isEmailValid(email: string): boolean {
-  //   const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
-  //   return emailRegex.test(email);
-  // }
+  isEmailValid(email: string): boolean {
+    const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
+    return emailRegex.test(email);
+  }
 
-  // clearEmailError() {
-  //   this.emailError = '';
-  // }
+  clearEmailError() {
+    this.emailError = '';
+  }
 }
 
  

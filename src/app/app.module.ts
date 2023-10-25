@@ -11,6 +11,8 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { RouterModule } from '@angular/router';
 import { SelectPageComponent } from './select-page/select-page.component';
 import { ProductSelectionComponent } from './product-selection/product-selection.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { ConfigurationComponent } from './configuration/configuration.component';
 
 
 @NgModule({
@@ -22,6 +24,8 @@ import { ProductSelectionComponent } from './product-selection/product-selection
     LocationComponent,
     SelectPageComponent,
     ProductSelectionComponent,
+    NavbarComponent,
+    ConfigurationComponent,
       ],
   imports: [
     BrowserModule,
