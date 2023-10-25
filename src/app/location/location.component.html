@@ -77,14 +77,14 @@
         <img class="sb-title-icon" src="https://fonts.gstatic.com/s/i/googlematerialicons/location_pin/v5/24px.svg" alt="">
         <span>Address Selection</span>
       </div>
-      <input type="text" placeholder="Address" id="location-input" #locationInput />
-      <input type="text" placeholder="Apt, Suite, etc (optional)" #aptSuite/>
-      <input type="text" placeholder="City" id="locality-input" #city/>
+      <input type="text" placeholder="Address" id="location-input" #locationInput [(ngModel)]="locationInputValue"/>
+      <input type="text" placeholder="Apt, Suite, etc (optional)" #aptSuite  [(ngModel)]="aptSuiteValue"/>
+      <input type="text" placeholder="City" id="locality-input" #city  [(ngModel)]="cityValue"/>
       <div class="half-input-container">
-        <input type="text" class="half-input" placeholder="State/Province" id="administrative_area_level_1-input" #state/>
-        <input type="text" class="half-input" placeholder="Zip/Postal code" id="postal_code-input" #zip/>
+        <input type="text" class="half-input" placeholder="State/Province" id="administrative_area_level_1-input" #state  [(ngModel)]="stateValue"/>
+        <input type="text" class="half-input" placeholder="Zip/Postal code" id="postal_code-input" #zip  [(ngModel)]="zipValue"/>
       </div>
-      <input type="text" placeholder="Country" id="country-input" #country/>
+      <input type="text" placeholder="Country" id="country-input" #country  [(ngModel)]="countryValue"/>
       <button class="button-cta" (click)="onCheckout()">Checkout</button>
       <button class="button-cta" routerLink="/ProductSelection">Product Select</button>
 

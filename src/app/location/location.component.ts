@@ -7,12 +7,12 @@ import { LocationService } from '../location.service';
   styleUrls: ['./location.component.css']
 })
 export class LocationComponent implements AfterViewInit {
-  private locationInputValue: string = '';
-  private aptSuiteValue: string = '';
-  private cityValue: string = '';
-  private stateValue: string = '';
-  private zipValue: string = '';
-  private countryValue: string = '';
+  public locationInputValue: string = '';
+  public aptSuiteValue: string = '';
+  public cityValue: string = '';
+  public stateValue: string = '';
+  public zipValue: string = '';
+  public countryValue: string = '';
 
   constructor(public locationservice:LocationService){}
 
@@ -27,7 +27,7 @@ export class LocationComponent implements AfterViewInit {
     };
 
     this.locationservice.saveLocation(location).subscribe(
-      (response) => {
+      (response:any) => {
         // Handle success, e.g., show a success message to the user.
         console.log('Location saved successfully!', response);
       },
@@ -47,12 +47,12 @@ export class LocationComponent implements AfterViewInit {
   @ViewChild('country') country: ElementRef | any;
 
   initMap() {
-    this.locationInputValue = this.locationInput.nativeElement.value;
-    this.aptSuiteValue = this.aptSuite.nativeElement.value;
+    this.locationInputValue = this.locationInputValue;
+    this.aptSuiteValue = this.aptSuiteValue;
     this.cityValue = this.city.nativeElement.value;
     this.stateValue = this.state.nativeElement.value;
     this.zipValue = this.zip.nativeElement.value;
-    this.countryValue = this.country.nativeElement.value;
+    this.countryValue = this.countryValue;
 
     const CONFIGURATION = {
       ctaTitle: 'Checkout',
