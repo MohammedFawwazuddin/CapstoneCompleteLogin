@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { DataService } from '../data.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { AuthService } from '../auth.service';
+
 
 @Component({
   selector: 'app-select-page',
@@ -8,18 +11,38 @@ import { DataService } from '../data.service';
   styleUrls: ['./select-page.component.css']
 })
 export class SelectPageComponent implements OnInit {
-  quotes: any[] = []; // Define an array to store the fetched data
-  constructor(private dataService: DataService, private http: HttpClient) {}
+  quotes: any[] = []; 
+  myForm: FormGroup;
+
+  constructor(private dataService: DataService, private http: HttpClient,private authService:AuthService) {
+    this.myForm = new FormGroup({
+      customerName: new FormControl('', Validators.required),
+      accountStatus: new FormControl('', Validators.required),
+      quoteName: new FormControl('', Validators.required),
+      quoteOwner: new FormControl('', Validators.required)
+  });
+  }
 
   ngOnInit() {
     // Fetch data from the database when the component is initialized
+    // this.dataService.getData().subscribe(
+    //   (response: any) => {
+    //     console.log(response);
+    //     this.quotes = response; // Store the fetched data in the 'data' array
+    //   }
+    // );
+
     this.dataService.getData().subscribe(
       (response: any) => {
-        console.log(response);
-        this.quotes = response; // Store the fetched data in the 'data' array
+          this.quotes = response.map((quote: any) => ({
+              ...quote,
+              userName: quote.userName ? quote.userName : 'Unknown User'
+          }));
       }
-    );
+  );
   }
+
+
   customerName: string = '';
   accountStatus: string = 'New';
   quoteName: string = '';
@@ -39,7 +62,8 @@ export class SelectPageComponent implements OnInit {
       accountStatus: this.accountStatus,
       quoteName: this.quoteName,
       quoteOwner: this.quoteOwner,
-      quoteId: uniqueQuoteId // Include the quoteId in the data
+      quoteId: uniqueQuoteId, // Include the quoteId in the data
+      userName : this.authService.getUsername()
     };
 
     this.http.post('http://localhost:8080/api/selectpage', data).subscribe(
@@ -47,5 +71,6 @@ export class SelectPageComponent implements OnInit {
         console.log('Data saved successfully', response);
       }
     );
+    this.ngOnInit();
   }
 }

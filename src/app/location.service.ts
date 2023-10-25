@@ -1,27 +1,26 @@
-import { HttpClient } from '@angular/common/http';
+// location.service.ts
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LocationService {
+  private apiUrl = 'http://localhost:8080/api/location'; // Replace with your Spring Boot API URL
 
-  constructor(public http : HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  saveLocation(location: any): Observable<any> {
-    // Convert the location object to a plain JavaScript object
-    const plainLocation = {
-      address: location.address,
-      aptSuite: location.aptSuite,
-      city: location.city,
-      state: location.state,
-      zip: location.zip,
-      country: location.country,
-      // Add other properties here if needed
-    };
+  saveLocation(locationData: any): Observable<any> {    
+    return this.http.post(`${this.apiUrl}/save`, locationData);
+  }
+
+  getLocations(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/get`);
+  }
+}
+
   
     // Use JSON.stringify with the plain object
-    return this.http.post<any>('http://localhost:8080/api/location', JSON.stringify(plainLocation));
-  }
-  }
+    //return this.http.post<any>('http://localhost:8080/api/location', JSON.stringify(plainLocation));
+

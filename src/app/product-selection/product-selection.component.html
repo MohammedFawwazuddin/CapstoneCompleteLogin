@@ -7,15 +7,14 @@
 </head>
 <body>
     <div class="product-tiles">
-        <div class="product-tile" *ngFor="let product of products">
+        <div class="product-tile" *ngFor="let product of products" (click)="selectProduct(product)">
             <div class="product-image">
-                <img [src]="product.image" alt="{{ product.name }}">
+                <img [src]="product.imageURL" alt="{{ product.name }}">
             </div>
             <div class="product-name">
                 <h3>Product Name: {{ product.name }}</h3>
             </div>
             <div class="product-details">
-                <p>Internal Name: {{ product.internalName }}</p>
                 <p>Product Details: {{ product.details }}</p>
                 <p>Max Products Per Location: {{ product.maxProductsPerLocation }}</p>
                 <p>Price: {{ product.price }}</p>
@@ -27,13 +26,17 @@
                     <option value="option3">Option 3</option>
                 </select>
             </div>
+            <br />
+            <br />
             <div class="button-container">
-                <button class="details">Details</button>
-                <button class="features">Features</button>
+                <button class="details" (click)="openDetailsDialog(product)">Details</button>
+
+
+                <button (click)="goToConfigurationPage()">Select</button>
+
             </div>
         </div>
     </div>
-    <button routerLink="/configuration">Next</button>
 
        <!-- <div *ngIf="productDetails">
         <h2>Product Details</h2>

@@ -13,6 +13,8 @@ import { SelectPageComponent } from './select-page/select-page.component';
 import { ProductSelectionComponent } from './product-selection/product-selection.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ConfigurationComponent } from './configuration/configuration.component';
+import { ProductDetailsDialogComponent } from './product-details-dialog/product-details-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -26,6 +28,7 @@ import { ConfigurationComponent } from './configuration/configuration.component'
     ProductSelectionComponent,
     NavbarComponent,
     ConfigurationComponent,
+    ProductDetailsDialogComponent,
       ],
   imports: [
     BrowserModule,
@@ -33,7 +36,8 @@ import { ConfigurationComponent } from './configuration/configuration.component'
     FormsModule,
     HttpClientModule,
     RouterModule,
-    GoogleMapsModule
+    GoogleMapsModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

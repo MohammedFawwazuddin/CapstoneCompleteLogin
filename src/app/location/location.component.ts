@@ -7,19 +7,37 @@ import { LocationService } from '../location.service';
   styleUrls: ['./location.component.css']
 })
 export class LocationComponent implements AfterViewInit {
+  private locationInputValue: string = '';
+  private aptSuiteValue: string = '';
+  private cityValue: string = '';
+  private stateValue: string = '';
+  private zipValue: string = '';
+  private countryValue: string = '';
 
   constructor(public locationservice:LocationService){}
-onCheckout() {
-  const location = {
-    address: this.locationInput,
-    aptSuite : this.aptSuite,
-    city : this.city,
-    state : this.state,
-    zip : this.zip,
-    country : this.country,
+
+  onCheckout() {
+    const location = {
+      address: this.locationInputValue,
+      aptSuite: this.aptSuiteValue,
+      city: this.cityValue,
+      state: this.stateValue,
+      zip: this.zipValue,
+      country: this.countryValue,
+    };
+
+    this.locationservice.saveLocation(location).subscribe(
+      (response) => {
+        // Handle success, e.g., show a success message to the user.
+        console.log('Location saved successfully!', response);
+      },
+      (error) => {
+        // Handle error, e.g., show an error message to the user.
+        console.error('Error saving location:', error);
+      }
+    );
   }
-  this.locationservice.saveLocation(location).subscribe();
-}
+  
   @ViewChild('gmpMap') gmpMap: ElementRef | any;
   @ViewChild('locationInput') locationInput: ElementRef | any;
   @ViewChild('aptSuite') aptSuite: ElementRef | any;
@@ -27,14 +45,15 @@ onCheckout() {
   @ViewChild('state') state: ElementRef | any;
   @ViewChild('zip') zip: ElementRef | any;
   @ViewChild('country') country: ElementRef | any;
-  @ViewChild('lat') lat: ElementRef | any;
-  @ViewChild('lng') lng: ElementRef | any;
-
-  ngAfterViewInit() {
-    this.initMap();
-  }
 
   initMap() {
+    this.locationInputValue = this.locationInput.nativeElement.value;
+    this.aptSuiteValue = this.aptSuite.nativeElement.value;
+    this.cityValue = this.city.nativeElement.value;
+    this.stateValue = this.state.nativeElement.value;
+    this.zipValue = this.zip.nativeElement.value;
+    this.countryValue = this.country.nativeElement.value;
+
     const CONFIGURATION = {
       ctaTitle: 'Checkout',
       mapOptions: {
@@ -151,4 +170,7 @@ onCheckout() {
     return document.getElementById(component + '-input') as HTMLInputElement | null;
   }
   
+  ngAfterViewInit() {
+    this.initMap();
+  }
 }
