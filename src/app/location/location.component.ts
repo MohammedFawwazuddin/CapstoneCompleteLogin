@@ -18,21 +18,19 @@ export class LocationComponent implements AfterViewInit {
 
   onCheckout() {
     const location = {
-      address: this.locationInputValue,
-      aptSuite: this.aptSuiteValue,
+      location: this.locationInputValue,
+      suite: this.aptSuiteValue,
       city: this.cityValue,
       state: this.stateValue,
-      zip: this.zipValue,
+      zipCode: this.zipValue,
       country: this.countryValue,
     };
 
     this.locationservice.saveLocation(location).subscribe(
-      (response:any) => {
-        // Handle success, e.g., show a success message to the user.
+      (response) => {
         console.log('Location saved successfully!', response);
       },
       (error) => {
-        // Handle error, e.g., show an error message to the user.
         console.error('Error saving location:', error);
       }
     );
@@ -47,13 +45,13 @@ export class LocationComponent implements AfterViewInit {
   @ViewChild('country') country: ElementRef | any;
 
   initMap() {
-    this.locationInputValue = this.locationInputValue;
-    this.aptSuiteValue = this.aptSuiteValue;
+    this.locationInputValue = this.locationInput.nativeElement.value;
+    this.aptSuiteValue = this.aptSuite.nativeElement.value;
     this.cityValue = this.city.nativeElement.value;
     this.stateValue = this.state.nativeElement.value;
     this.zipValue = this.zip.nativeElement.value;
-    this.countryValue = this.countryValue;
-
+    this.countryValue = this.country.nativeElement.value;
+  
     const CONFIGURATION = {
       ctaTitle: 'Checkout',
       mapOptions: {
@@ -76,9 +74,7 @@ export class LocationComponent implements AfterViewInit {
 
     const componentForm: { [key: string]: string } = {
       street_number: 'City',
-      route: 'long_name',
       locality: 'long_name',
-      administrative_area_level_1: 'Area',
       country: 'long_name',
       postal_code: 'short_name',
     };
@@ -120,10 +116,7 @@ export class LocationComponent implements AfterViewInit {
 
   fillInAddress(place: google.maps.places.PlaceResult) {
     const addressNameFormat = {
-      street_number: 'short_name',
-      route: 'long_name',
       locality: 'Locality',
-      administrative_area_level_1: 'short_name',
       country: 'Country',
       postal_code: 'Postal Code',
     };
@@ -146,9 +139,7 @@ export class LocationComponent implements AfterViewInit {
   ): string {
     const addressNameFormat: { [key: string]: string } = {
       street_number: 'City',
-      route: 'long_name',
       locality: 'Locality',
-      administrative_area_level_1: 'short_name',
       country: 'Country',
       postal_code: 'Postal Code',
     };
