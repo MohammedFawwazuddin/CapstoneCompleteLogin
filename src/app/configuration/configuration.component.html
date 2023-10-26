@@ -2,9 +2,17 @@
     <h3>Configuration Page</h3>
   
     <label for="locations">Select Location:</label>
-    <select id="locations" [(ngModel)]="selectedLocation">
-      <option *ngFor="let location of locations" [value]="location.id">{{ location.name }}</option>
-    </select>
+  <select id="locations" [(ngModel)]="selectedLocation">
+    <option *ngFor="let location of locations">
+      {{ location.state }},
+      {{ location.location }},
+      {{ location.city }},
+      {{ location.country }},
+    
+    
+    
+    </option>
+  </select>
   
     <label for="products">Select Product:</label>
     <select id="products" [(ngModel)]="selectedProduct">

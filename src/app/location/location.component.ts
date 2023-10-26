@@ -13,17 +13,29 @@ export class LocationComponent implements AfterViewInit {
   public stateValue: string = '';
   public zipValue: string = '';
   public countryValue: string = '';
-  locations: any;
+  public locations: any[] = []; // You can use 'any' type if you're not using a model.
+
 
   constructor(public locationservice:LocationService){}
 
+ 
   ngOnInit() {
-    this.locationservice.getLocations().subscribe((locations) => {
-      // Set the fetched locations
-      this.locations = locations;
-    });
+    this.initMap();
+    this.loadLocations();
   }
-  
+
+  loadLocations() {
+    this.locationservice.getLocations().subscribe(
+      (locations: any[]) => {
+        this.locations = locations;
+      },
+      (error: any) => {
+        console.error('Error loading locations:', error);
+      }
+    );
+  }
+
+
   onCheckout() {
     const location = {
       location: this.locationInputValue,
