@@ -1,20 +1,19 @@
-/* Add this CSS to your stylesheet */
 body {
-  background-color: #f0f0f0; /* Light Gray Background */
-  font-family: Arial, sans-serif; /* Use a common font family */
+  background-color: #f0f0f0; 
+  font-family: Arial, sans-serif; 
 }
 
 .container {
   padding: 20px;
-  background-color: #fff; /* White Container Background */
+  background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s;
 }
 
 .container:hover {
-  background-color: #f5f5f5; /* Slightly lighter background on hover */
-}
+  background-color: #f5f5f5; }
+
 
 .flex-container {
   display: flex;
@@ -32,7 +31,7 @@ body {
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden; /* Ensure card contents don't overflow */
+  overflow: hidden; 
 }
 
 .tile {
@@ -49,7 +48,7 @@ body {
   text-transform: capitalize;
   display: inline-block;
   padding: 3px 9px;
-  margin: 0 0 10px 0; /* Add margin to create space below the title */
+  margin: 0 0 10px 0; 
 }
 
 input {
@@ -82,8 +81,8 @@ input {
 }
 
 .custom-table th, .custom-table td:last-child {
-  width: 20%; /* Adjust the width of the Actions column */
-}
+  width: 20%;}
+
 
 .custom-table button {
   margin: 5px;
@@ -116,14 +115,14 @@ input {
 
 button.submit-details,
 button[routerLink="/location"] {
-  width: 50%; /* Set to 100% width */
-  padding: 10px 0; /* Add vertical padding for better spacing */
+  width: 50%;
+  padding: 10px 0;
   text-align:center;
 }
 
 button.submit-details {
-  background-color: #350059; /* Blue background color */
-  color: #fff; /* White text color */
+  background-color: #350059; 
+  color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -131,13 +130,12 @@ button.submit-details {
 }
 
 button.submit-details:hover {
-  background-color: #0056b3; /* Darker blue on hover */
+  background-color: #0056b3; 
 }
 
-/* Style for the "Go to Product Selection" button */
 button[routerLink="/location"] {
-  background-color: #a70000; /* Green background color */
-  color: #fff; /* White text color */
+  background-color: #a70000; 
+  color: #fff; 
   border: none;
   text-align:center;
   border-radius: 5px;
@@ -146,24 +144,23 @@ button[routerLink="/location"] {
 }
 
 button[routerLink="/location"]:hover {
-  background-color: #2BAE2B; /* Darker green on hover */
+  background-color: #2BAE2B; 
 }
-/* Add this CSS to your stylesheet */
 .button-container {
   display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
+  justify-content: center; 
+  align-items: center; 
 }
 
 .button-item {
-  width: 50%; /* Set the width to 50% */
-  text-align: center; /* Center the text inside the button */
+  width: 50%; 
+  text-align: center;
 }
 
 button {
-  padding: 10px 20px; /* Add padding to the buttons */
-  background-color: #007BFF; /* Blue background color */
-  color: #fff; /* Whrgb(59, 0, 75)t color */
+  padding: 10px 20px; 
+  background-color: #007BFF; 
+  color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -171,5 +168,5 @@ button {
 }
 
 button:hover {
-  background-color: #0056b3; /* Darker blue on hover */
+  background-color: #0056b3; 
 }

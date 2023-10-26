@@ -8,13 +8,10 @@ import { ProductSelectionComponent } from './product-selection/product-selection
 })
 export class ProductService {
   private baseUrl = 'http://localhost:8080/api/products';
-
   constructor(private http: HttpClient) {}
-
   getProductDetails(productId: number): Observable<ProductSelectionComponent[]> {
     return this.http.get<ProductSelectionComponent[]>(`${this.baseUrl}/${productId}/details`);
   }
-
   getProductFeatures(productId: number): Observable<ProductSelectionComponent[]> {
     return this.http.get<ProductSelectionComponent[]>(`${this.baseUrl}/${productId}/features`);
   }

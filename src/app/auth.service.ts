@@ -23,8 +23,8 @@ export class AuthService {
     
       logout() {
         localStorage.removeItem('token');
-        this.authService.isLoggedIn = false; // Set isLoggedIn to false
-        this.authService.username = undefined; // Reset the username
+        this.authService.isLoggedIn = false; 
+        this.authService.username = undefined; 
         this.router.navigate(['/login']);
       }
       
@@ -67,13 +67,12 @@ export class AuthService {
     getUsername(): string | undefined {
         const token = this.getToken();
         if (token) {
-          // You should extract and return the username or user identifier from the token
-          // For example, if your token contains a field 'username', you can do this:
+        
           const decodedToken = JSON.parse(atob(token.split('.')[1]));
           console.log(decodedToken);
-          return decodedToken.sub; // Replace 'username' with the actual field in your token
+          return decodedToken.sub;
         }
-        return undefined; // Return undefined if no token or username is found
+        return undefined;
       }
       
     }

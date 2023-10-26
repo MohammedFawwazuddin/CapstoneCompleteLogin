@@ -24,13 +24,6 @@ export class SelectPageComponent implements OnInit {
   }
 
   ngOnInit() {
-    // Fetch data from the database when the component is initialized
-    // this.dataService.getData().subscribe(
-    //   (response: any) => {
-    //     console.log(response);
-    //     this.quotes = response; // Store the fetched data in the 'data' array
-    //   }
-    // );
 
     this.dataService.getData().subscribe(
       (response: any) => {
@@ -50,7 +43,7 @@ export class SelectPageComponent implements OnInit {
 
   generateUniqueQuoteId(): string {
     const timestamp: number = Date.now();
-    const randomNumber: number = Math.floor(Math.random() * 10000); // You can adjust the range as needed
+    const randomNumber: number = Math.floor(Math.random() * 10000); 
     const quoteId: string = `Q${timestamp}-${randomNumber}`;
     return quoteId;
   }
@@ -62,7 +55,7 @@ export class SelectPageComponent implements OnInit {
       accountStatus: this.accountStatus,
       quoteName: this.quoteName,
       quoteOwner: this.quoteOwner,
-      quoteId: uniqueQuoteId, // Include the quoteId in the data
+      quoteId: uniqueQuoteId, 
       userName : this.authService.getUsername()
     };
 

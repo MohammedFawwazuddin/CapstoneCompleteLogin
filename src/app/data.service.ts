@@ -8,7 +8,6 @@ import { Observable } from 'rxjs/internal/Observable';
 export class DataService {
   constructor(private http: HttpClient) {}
 
-  // Fetch data from the database
   getData() :Observable<any>{
     return this.http.get('http://localhost:8080/api/selectpage'); // Replace with your actual API endpoint
   }

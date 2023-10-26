@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class LocationService {
-  private apiUrl = 'http://localhost:8080/api/location'; // Replace with your Spring Boot API URL
+  private apiUrl = 'http://localhost:8080/api/location';
 
   constructor(private http: HttpClient) {}
 

@@ -80,8 +80,8 @@
     font-size: 12px;
     width: 100%; /* Full width for buttons */
     display: flex;
-    justify-content: center; /* Center text horizontally */
-    align-items: center; /* Center text vertically */
+    justify-content: center; 
+    align-items: center; 
   }
   
   .button-container button:hover {
@@ -89,7 +89,6 @@
     transform: scale(1.05);
   }
   
-  /* Additional button styles */
   .button-container button.details {
     background-color: #5bc0de;
   }
