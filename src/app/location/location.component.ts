@@ -13,9 +13,17 @@ export class LocationComponent implements AfterViewInit {
   public stateValue: string = '';
   public zipValue: string = '';
   public countryValue: string = '';
+  locations: any;
 
   constructor(public locationservice:LocationService){}
 
+  ngOnInit() {
+    this.locationservice.getLocations().subscribe((locations) => {
+      // Set the fetched locations
+      this.locations = locations;
+    });
+  }
+  
   onCheckout() {
     const location = {
       location: this.locationInputValue,
