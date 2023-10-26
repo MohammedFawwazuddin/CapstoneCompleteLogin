@@ -4,21 +4,20 @@
     <label for="locations">Select Location:</label>
   <select id="locations" [(ngModel)]="selectedLocation">
     <option *ngFor="let location of locations">
-      {{ location.state }},
-      {{ location.location }},
-      {{ location.city }},
-      {{ location.country }},
-    
-    
-    
-    </option>
+      <p>State: {{ location.state }}</p>
+      <p>Location: {{ location.location }}</p>
+      <p>City: {{ location.city }}</p>
+      <p>Country: {{ location.country }}</p>
+      <p>Zip Code: {{ location.zipCode }}</p>
+      </option>
   </select>
   
-    <label for="products">Select Product:</label>
-    <select id="products" [(ngModel)]="selectedProduct">
-      <option *ngFor="let product of products" [value]="product.id">{{ product.name }}</option>
-    </select>
+  <label for="products">Select Product:</label>
+  <select id="products" [(ngModel)]="selectedProduct">
+    <option *ngFor="let product of products" [value]="product">{{ product.id }} - {{ product.name }}</option>
+  </select>
   
+    
     <button (click)="enableProduct()">Enable</button>
   
     <div *ngIf="productEnabled">

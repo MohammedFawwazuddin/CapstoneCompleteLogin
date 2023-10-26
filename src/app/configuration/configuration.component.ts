@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LocationService } from '../location.service';
+import { ProductService } from '../product.service';
 
 @Component({
   selector: 'app-configuration',
@@ -11,13 +12,15 @@ export class ConfigurationComponent  implements OnInit{
   selectedProduct: number | undefined; 
   products: any[] = []; 
   productEnabled: boolean = false;
-  public locations: any[] = []; // You can use 'any' type if you're not using a model.
-  constructor(private locationService: LocationService) {}
+  public locations: any[] = [];
+  
+  constructor(private locationService: LocationService, private productService: ProductService  ) {}
 
   ngOnInit() {
     this.loadLocations();
-  }
+    this.loadProducts(); 
 
+  }
   loadLocations() {
     this.locationService.getLocations().subscribe(
       (locations) => {
@@ -28,6 +31,17 @@ export class ConfigurationComponent  implements OnInit{
       }
     );
   }
+  
+  loadProducts() {
+  this.productService.getProducts().subscribe(
+    (products) => {
+      this.products = products;
+    },
+    (error) => {
+      console.error('Error loading products:', error);
+    }
+  );
+}
   enableProduct() {
   }
 

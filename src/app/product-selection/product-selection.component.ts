@@ -19,10 +19,9 @@ export class ProductSelectionComponent implements OnInit {
     this.http.get('http://localhost:8080/api/selection').subscribe((data: any) => {
       this.products = data;
       console.log(this.products);
-      
     });
   }
-
+  
   selectProduct(product: any) {
     this.selectedProduct = product;
   }
@@ -34,6 +33,7 @@ export class ProductSelectionComponent implements OnInit {
       alert('Please select a product before proceeding.');
     }
   }
+
   openDetailsDialog(product: any): void {
     const dialogRef = this.dialog.open(ProductDetailsDialogComponent, {
       width: '400px', 
