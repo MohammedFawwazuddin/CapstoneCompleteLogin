@@ -5,6 +5,11 @@
 <body>
   <div class="configuration-container">
     <h3>Configuration Page</h3>
+   
+    <label for="products">Select Product:</label>
+    <select id="products" [(ngModel)]="selectedProduct">
+    <option *ngFor="let product of products">Id: {{ product.id }} Name: {{ product.name }} Price:$ {{product.price}}</option>
+    </select>
 
     <label for="locations">Select Location:</label>
     <select id="locations" [(ngModel)]="selectedLocation">
@@ -17,10 +22,7 @@
       </option>
     </select>
 
-    <label for="products">Select Product:</label>
-    <select id="products" [(ngModel)]="selectedProduct">
-      <option *ngFor="let product of products" [value]="product">{{ product.id }} - {{ product.name }}</option>
-    </select>
+    
 
     <button (click)="enableProduct()">Enable</button>
 

@@ -10,12 +10,13 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./configuration.component.css']
 })
 export class ConfigurationComponent implements OnInit {
-  selectedLocation: any;
-  selectedProduct: any;
-  products: any[] = [];
+  selectedLocation: any ; // Set initial message
+  selectedProduct: any ; // Set initial message
+  products:any[] = [];
   productEnabled: boolean = false;
   locations: any[] = [];
   data: any;
+
 
   constructor(
     private router: Router,
@@ -52,15 +53,16 @@ export class ConfigurationComponent implements OnInit {
   }
 
   enableProduct() {
-    // You can implement the logic to enable a product here
     this.productEnabled = true;
   }
 
   saveConfiguration() {
-    if (this.selectedProduct && this.selectedLocation) {
+    if (this.selectedProduct !== 'Select a Product' && this.selectedLocation !== 'Select a Location') {
       const billingData = {
         productName: this.selectedProduct.name,
         location: this.selectedLocation.location,
+        productId: this.selectedProduct.id,
+        productPrice: this.selectedProduct.price,
       };
       console.log(billingData);
       this.router.navigate(['/billing', billingData]);
@@ -68,4 +70,6 @@ export class ConfigurationComponent implements OnInit {
       console.error('Please select a product and a location before saving.');
     }
   }
+  
+  
 }

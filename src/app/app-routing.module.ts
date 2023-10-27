@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'product-details/:id', component: ProductDetailsDialogComponent,canActivate: [AuthGuard] },
   { path: 'configuration/:productId', component: ConfigurationComponent, },
   { path: 'Configuration', component: ConfigurationComponent,canActivate: [AuthGuard] },
-  { path: 'billing', component: BillingComponent,canActivate: [AuthGuard] },
+  {path: 'billing/:productName/:location',component: BillingComponent,canActivate: [AuthGuard] },
 
   { path: '', redirectTo: '/selectpage', pathMatch: 'full' }
 ];

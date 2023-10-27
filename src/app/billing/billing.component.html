@@ -1,19 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Billing Page</title>
-</head>
-<body>
-    <div class="billing-container">
-        <h3>Billing Page</h3>
-        <div class="billing-details" *ngIf="billingData">
-          <p><strong>Product Name:</strong> {{ billingData.name }}</p>
-          <p><strong>Product Details:</strong> {{ billingData.productDetails }}</p>
-          <p><strong>Price:</strong> ${{ billingData.price }}</p>
-          <p><strong>Location:</strong> {{ billingData.location }}</p>
-        </div>
-    </div>
-</body>
-</html>
+<h3>Billing Page</h3>
+<p><strong>Product Name:</strong> {{ productName }}</p>
+<p><strong>Location:</strong> {{ location }}</p>
+<p><strong>Product ID:</strong> {{ productId }}</p>
+<p><strong>Product Price:</strong> {{ productPrice | currency }}</p> <!-- Assuming productPrice is in the currency format -->
+        <button (click)="makePayment()">Make Payment</button>
+
