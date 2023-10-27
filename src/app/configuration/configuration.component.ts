@@ -1,26 +1,34 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { LocationService } from '../location.service';
 import { ProductService } from '../product.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-configuration',
   templateUrl: './configuration.component.html',
   styleUrls: ['./configuration.component.css']
 })
-export class ConfigurationComponent  implements OnInit{
-  selectedLocation: number | undefined; 
-  selectedProduct: number | undefined; 
-  products: any[] = []; 
+export class ConfigurationComponent implements OnInit {
+  selectedLocation: any;
+  selectedProduct: any;
+  products: any[] = [];
   productEnabled: boolean = false;
-  public locations: any[] = [];
-  
-  constructor(private locationService: LocationService, private productService: ProductService  ) {}
+  locations: any[] = [];
+  data: any;
+
+  constructor(
+    private router: Router,
+    private locationService: LocationService,
+    private productService: ProductService,
+    private http: HttpClient
+  ) {}
 
   ngOnInit() {
     this.loadLocations();
-    this.loadProducts(); 
-
+    this.loadProducts();
   }
+
   loadLocations() {
     this.locationService.getLocations().subscribe(
       (locations) => {
@@ -31,21 +39,33 @@ export class ConfigurationComponent  implements OnInit{
       }
     );
   }
-  
+
   loadProducts() {
-  this.productService.getProducts().subscribe(
-    (products) => {
-      this.products = products;
-    },
-    (error) => {
-      console.error('Error loading products:', error);
-    }
-  );
-}
+    this.productService.getProducts().subscribe(
+      (products) => {
+        this.products = products;
+      },
+      (error) => {
+        console.error('Error loading products:', error);
+      }
+    );
+  }
+
   enableProduct() {
+    // You can implement the logic to enable a product here
+    this.productEnabled = true;
   }
 
   saveConfiguration() {
-
+    if (this.selectedProduct && this.selectedLocation) {
+      const billingData = {
+        productName: this.selectedProduct.name,
+        location: this.selectedLocation.location,
+      };
+      console.log(billingData);
+      this.router.navigate(['/billing', billingData]);
+    } else {
+      console.error('Please select a product and a location before saving.');
     }
+  }
 }

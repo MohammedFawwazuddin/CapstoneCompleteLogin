@@ -29,8 +29,6 @@ export class ProductSelectionComponent implements OnInit {
   goToConfigurationPage() {
     if (this.selectedProduct) {
       this.router.navigate(['/configuration', this.selectedProduct.id]);
-    } else {
-      alert('Please select a product before proceeding.');
     }
   }
 

@@ -15,6 +15,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ConfigurationComponent } from './configuration/configuration.component';
 import { ProductDetailsDialogComponent } from './product-details-dialog/product-details-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { BillingComponent } from './billing/billing.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     NavbarComponent,
     ConfigurationComponent,
     ProductDetailsDialogComponent,
+    BillingComponent,
       ],
   imports: [
     BrowserModule,

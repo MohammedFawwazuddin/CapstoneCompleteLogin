@@ -8,18 +8,19 @@ import { ProductSelectionComponent } from './product-selection/product-selection
 import { AuthGuard } from './auth.guard';
 import { ConfigurationComponent } from './configuration/configuration.component';
 import { ProductDetailsDialogComponent } from './product-details-dialog/product-details-dialog.component';
-
-
+import { BillingComponent } from './billing/billing.component';
 
 const routes: Routes = [
   { path: 'register', component: RegistrationPageComponent },
   { path: 'login', component: LoginPageComponent },
   { path: 'selectpage', component: SelectPageComponent,canActivate: [AuthGuard] },
   { path: 'location', component: LocationComponent,canActivate: [AuthGuard] },
-  { path: 'ProductSelection', component: ProductSelectionComponent,canActivate: [AuthGuard] },
+  { path: 'productselection', component: ProductSelectionComponent,canActivate: [AuthGuard] },
   { path: 'product-details/:id', component: ProductDetailsDialogComponent,canActivate: [AuthGuard] },
   { path: 'configuration/:productId', component: ConfigurationComponent, },
   { path: 'Configuration', component: ConfigurationComponent,canActivate: [AuthGuard] },
+  { path: 'billing', component: BillingComponent,canActivate: [AuthGuard] },
+
   { path: '', redirectTo: '/selectpage', pathMatch: 'full' }
 ];
 

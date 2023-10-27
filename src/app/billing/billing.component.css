@@ -1,0 +1,73 @@
+/* Reset default margin and padding for all elements */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Set a background color and font for the entire page */
+  body {
+    background-color: #f4f4f4;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Style the billing container */
+  .billing-container {
+    background-color: #fff;
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Style the billing page title */
+  .billing-container h3 {
+    font-size: 24px;
+    text-align: center;
+    color: #333;
+  }
+  
+  /* Style the billing details section */
+  .billing-details {
+    margin-top: 20px;
+  }
+  
+  /* Style the product name */
+  .billing-details p:first-child {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  /* Style other billing details */
+  .billing-details p {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  /* Style the price with a different color */
+  .billing-details p:nth-child(3) {
+    color: #FF5733;
+  }
+  
+  /* Style the location */
+  .billing-details p:last-child {
+    color: #555;
+  }
+  
+  /* Add responsive CSS for smaller screens */
+  @media (max-width: 768px) {
+    .billing-container {
+      max-width: 100%;
+      margin: 10px;
+      box-shadow: none;
+    }
+  
+    .billing-details p {
+      font-size: 14px;
+    }
+  }
+  
+  /* Make it more attractive by adding animations or custom fonts as needed */
+  
