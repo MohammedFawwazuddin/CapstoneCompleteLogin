@@ -10,13 +10,11 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./configuration.component.css']
 })
 export class ConfigurationComponent implements OnInit {
-  selectedLocation: any ; // Set initial message
-  selectedProduct: any ; // Set initial message
-  products:any[] = [];
+  selectedLocation: any;
+  selectedProduct: any;
+  products: any[] = [];
   productEnabled: boolean = false;
   locations: any[] = [];
-  data: any;
-
 
   constructor(
     private router: Router,
@@ -57,19 +55,20 @@ export class ConfigurationComponent implements OnInit {
   }
 
   saveConfiguration() {
-    if (this.selectedProduct !== 'Select a Product' && this.selectedLocation !== 'Select a Location') {
+    if (this.selectedProduct && this.selectedLocation) {
       const billingData = {
         productName: this.selectedProduct.name,
         location: this.selectedLocation.location,
         productId: this.selectedProduct.id,
         productPrice: this.selectedProduct.price,
       };
-      console.log(billingData);
-      this.router.navigate(['/billing', billingData]);
+
+      // Pass the billingData as query parameters when navigating to the billing page
+      this.router.navigate(['/billing'], {
+        queryParams: billingData
+      });
     } else {
       console.error('Please select a product and a location before saving.');
     }
   }
-  
-  
 }

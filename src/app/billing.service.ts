@@ -7,10 +7,18 @@ import { Observable } from 'rxjs';
 })
 export class BillingService {
 
-  private baseUrl = 'http://localhost:8080/api';
+  private baseUrl = 'http://localhost:8080/api'; // Your base URL
+  private billingEndpoint = '/billing'; // Modify this to match your actual endpoint
+
   constructor(private http: HttpClient) {}
 
+  getBillingData(): Observable<any> {
+    const url = this.baseUrl + this.billingEndpoint;
+    return this.http.get(url);
+  }
+
   saveBilling(billingData: any) {
-    return this.http.post(this.baseUrl, billingData);
+    const url = this.baseUrl + this.billingEndpoint;
+    return this.http.post(url, billingData);
   }
 }

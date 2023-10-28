@@ -10,14 +10,13 @@ import { HttpClient } from '@angular/common/http';
 export class BillingComponent implements OnInit {
   productName: string | undefined;
   location: string | undefined;
-product: any;
-  productPrice: any;
-  productId: any;
-
-  constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router) {}
+  productId: string | undefined;
+  productPrice: string | undefined;
+  
+  constructor(private route: ActivatedRoute, private http: HttpClient) {}
 
   ngOnInit() {
-    this.route.params.subscribe((params) => {
+    this.route.queryParams.subscribe((params) => {
       this.productName = params['productName'];
       this.location = params['location'];
       this.productId = params['productId'];
@@ -26,27 +25,8 @@ product: any;
   }
 
   makePayment() {
-    // Assuming you have a backend endpoint for storing billing details
-    const billingData = {
-      productName: this.productName,
-      location: this.location,
-    };
-
-    this.http.post('/api/storeBillingData', billingData).subscribe(
-      (response) => {
-        // Handle the successful storage of billing data
-        console.log('Billing data stored successfully');
-        this.showConfirmationMessage();
-      },
-      (error) => {
-        console.error('Error storing billing data:', error);
-      }
-    );
-  }
-
-  showConfirmationMessage() {
-    // Display a confirmation message using JavaScript
-    alert('Payment successful! Thank you for your purchase.');
-    this.router.navigate(['/thankyou']); // Route to the thank you page
+    // Implement your payment logic here
+    console.log('Payment logic goes here');
   }
 }
+
