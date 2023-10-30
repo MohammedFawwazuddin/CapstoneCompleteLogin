@@ -1,26 +1,19 @@
 <div class="register-container">
     <h3><b>Registration Page</b></h3>
-    <form (ngSubmit)="onSubmit()">
+    <form (ngSubmit)="onSubmit()" class="form">
         <div class="form-group">
-            <label for="name">Username:</label>
-            <input type="text" id="name" name="name" [(ngModel)]="name" required>
-            
+            <label for="name">Username</label>
+            <input type="text" id="name" name="name" [(ngModel)]="name" required class="form-control" placeholder="Enter your username">
         </div>
         <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" [(ngModel)]="email" required>
-            <div *ngIf="emailError" class="error-message">{{ emailError }}</div>
-
+            <label for="userpassword">Password</label>
+            <input type="password" id="userpassword" name="userpassword" [(ngModel)]="userpassword" required class="form-control" placeholder="Enter your password">
         </div>
         <div class="form-group">
-            <label for="userpassword">Password:</label>
-            <input type="password" id="userpassword" name="userpassword" [(ngModel)]="userpassword" required>
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" [(ngModel)]="confirmPassword" required class="form-control" placeholder="Confirm your password">
         </div>
-        <div class="form-group">
-            <label for="confirmPassword">Confirm Password:</label>
-            <input type="password" id="confirmPassword" name="confirmPassword" [(ngModel)]="confirmPassword" required>
-        </div>
-        <div class="error-message" *ngIf="emailError">{{ emailError }}</div>        
-        <button type="submit">Submit</button>
+        <div class="error-message" *ngIf="emailError">{{ emailError }}</div>
+        <button type="submit" class="btn btn-primary btn-block">Submit</button>
     </form>
 </div>

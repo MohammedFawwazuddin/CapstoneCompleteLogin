@@ -7,7 +7,7 @@ import { ProductSelectionComponent } from './product-selection/product-selection
   providedIn: 'root'
 })
 export class ProductService {
-  
+   
   private baseUrl = 'http://localhost:8080/api/selection';
   constructor(private http: HttpClient) {}
 
@@ -19,5 +19,8 @@ export class ProductService {
   }
   getProductFeatures(productId: number): Observable<ProductSelectionComponent[]> {
     return this.http.get<ProductSelectionComponent[]>(`${this.baseUrl}/${productId}/features`);
+  }
+  getProductQuantities(productId:number): Observable<ProductSelectionComponent[]> {
+    return this.http.get<ProductSelectionComponent[]>(`${this.baseUrl}/${productId}`);
   }
 }

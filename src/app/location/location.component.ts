@@ -13,7 +13,7 @@ export class LocationComponent implements AfterViewInit {
   public stateValue: string = '';
   public zipValue: string = '';
   public countryValue: string = '';
-  public locations: any[] = []; // You can use 'any' type if you're not using a model.
+  public locations: any[] = []; 
 
 
   constructor(public locationservice:LocationService){}
