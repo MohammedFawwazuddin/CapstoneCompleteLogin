@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule} from '@angular/common/http'
+import { HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginPageComponent } from './loginpage/loginpage.component';
@@ -16,6 +16,7 @@ import { ConfigurationComponent } from './configuration/configuration.component'
 import { ProductDetailsDialogComponent } from './product-details-dialog/product-details-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { BillingComponent } from './billing/billing.component';
+import { AuthInterceptorService } from './auth-interceptor.service';
 
 
 @NgModule({
@@ -41,7 +42,9 @@ import { BillingComponent } from './billing/billing.component';
     GoogleMapsModule,
     MatDialogModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

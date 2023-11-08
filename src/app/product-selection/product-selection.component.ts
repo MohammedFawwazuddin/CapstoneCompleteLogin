@@ -12,11 +12,9 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProductSelectionComponent implements OnInit {
   products: any[] = [];
-  selectedProduct: any;
-  selectedProductFeatures: any[] = [];
-  selectedProductParameters: any[] = [];
-  showFeatures: boolean = false; 
-  showParameters: boolean = false;
+  selectedProduct: any = null; // Initialize to null
+  selectedFeature: any[] = [];
+  selectedParameters: any[] = [];
   productName: any;
   location: any;
   productId: any;
@@ -31,21 +29,21 @@ export class ProductSelectionComponent implements OnInit {
       this.productId = params['productId'];
       this.productPrice = params['productPrice'];
     });
-
-    this.http.get('http://localhost:8080/api/selection').subscribe((data: any) => {
+    this.http.get<any>('http://localhost:8080/api/selection').subscribe((data: any) => {
       this.products = data;
       console.log(this.products);
     });
   }
 
-
   selectProduct(product: any) {
-    this.selectedProduct = product;
+    this.selectedProduct = product; // Update selectedProduct first
     this.http.get(`http://localhost:8080/api/products/${product.id}/features`).subscribe((data: any) => {
-      this.selectedProductFeatures = data;
+        this.selectedFeature = data;
+        console.log('Selected Features:', this.selectedFeature);
     });
     this.http.get(`http://localhost:8080/api/products/${product.id}/parameters`).subscribe((data: any) => {
-      this.selectedProductParameters = data;
+        this.selectedParameters = data;
+        console.log('Selected Parameters:', this.selectedParameters);
     });
   }
 
@@ -60,8 +58,8 @@ export class ProductSelectionComponent implements OnInit {
       width: '400px',
       data: {
         product,
-        features: this.selectedProductFeatures,
-        parameters: this.selectedProductParameters
+        features: this.selectedFeature,
+        parameters: this.selectedParameters
       },
     });
   }
@@ -69,6 +67,7 @@ export class ProductSelectionComponent implements OnInit {
   openProductDetails(selectedProduct: any): void {
     this.router.navigate(['/product-details', selectedProduct.id]);
   }
+
   showFeaturesDialog = false;
   showParametersDialog = false;
   dialogPosition = { top: '0', left: '0' };
@@ -81,5 +80,4 @@ export class ProductSelectionComponent implements OnInit {
       left: rect.left + 'px',
     };
   }
-
 }
