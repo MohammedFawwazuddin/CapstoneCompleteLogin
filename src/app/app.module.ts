@@ -17,6 +17,7 @@ import { ProductDetailsDialogComponent } from './product-details-dialog/product-
 import { MatDialogModule } from '@angular/material/dialog';
 import { BillingComponent } from './billing/billing.component';
 import { AuthInterceptorService } from './auth-interceptor.service';
+import { BillingConfirmationComponent } from './billing-confirmation/billing-confirmation.component';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { AuthInterceptorService } from './auth-interceptor.service';
     ConfigurationComponent,
     ProductDetailsDialogComponent,
     BillingComponent,
+    BillingConfirmationComponent,
       ],
   imports: [
     BrowserModule,

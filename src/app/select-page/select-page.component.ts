@@ -24,7 +24,6 @@ export class SelectPageComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.dataService.getData().subscribe(
       (response: any) => {
           this.quotes = response.map((quote: any) => ({

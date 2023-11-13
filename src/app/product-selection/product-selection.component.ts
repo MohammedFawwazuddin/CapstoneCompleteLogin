@@ -11,9 +11,10 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./product-selection.component.css']
 })
 export class ProductSelectionComponent implements OnInit {
+  
   products: any[] = [];
   selectedProduct: any = null; // Initialize to null
-  selectedFeature: any[] = [];
+  selectedFeature: any[] | undefined ;
   selectedParameters: any[] = [];
   productName: any;
   location: any;
@@ -47,9 +48,26 @@ export class ProductSelectionComponent implements OnInit {
     });
   }
 
+ 
+  showFeaturesDialog: boolean = false;
+  showParametersDialog: boolean = false;
+
+  toggleFeaturesDialog(product: any) {
+    setTimeout(() => {
+      this.showFeaturesDialog = !this.showFeaturesDialog;
+      this.selectedFeature = this.showFeaturesDialog ? product.features : null;
+      this.showParametersDialog = false; // Close parameters dialog when toggling features
+      this.selectedParameters = []; // Clear selected parameters when toggling features
+    }, 200);
+  }
+
+  toggleParametersDialog(parameters: any[]) {
+    this.showParametersDialog = !this.showParametersDialog;
+    this.selectedParameters = this.showParametersDialog ? parameters : [];
+  }
   goToConfigurationPage() {
     if (this.selectedProduct) {
-      this.router.navigate(['/configuration', this.selectedProduct.id]);
+        this.router.navigate(['/configuration', this.selectedProduct]);
     }
   }
 
@@ -68,8 +86,7 @@ export class ProductSelectionComponent implements OnInit {
     this.router.navigate(['/product-details', selectedProduct.id]);
   }
 
-  showFeaturesDialog = false;
-  showParametersDialog = false;
+  
   dialogPosition = { top: '0', left: '0' };
 
   setDialogPosition(event: MouseEvent): void {

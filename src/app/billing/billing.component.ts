@@ -20,7 +20,6 @@ export class BillingComponent implements OnInit {
       this.productName = params['productName'];
       this.location = params['location'];
       this.productId = params['productId'];
-      this.productPrice = params['productPrice'];
     });
 
     console.log('productName:', this.productName);

@@ -4,30 +4,49 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <style> 
 
-    .container {
+.container {
       padding: 20px;
       border-radius: 10px;
     }
 
     .form-flex-container {
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: column; /* Set the direction to column */
       gap: 20px;
     }
-.form-flex-item input,
-.form-flex-item select {
-  margin: 0; 
-  padding: 0; 
-  border: none; 
-}
+
+    .form-flex-item input,
+    .form-flex-item select {
+      margin: 0; 
+      padding: 0; 
+      border: none; 
+    }
+
     .form-flex-item {
-      flex: 0 0 calc(50% - 20px);
       text-align: center;
       cursor: pointer;
       border-radius: 8px;
       box-shadow: 0 4px 8px rgb(94, 94, 94);
       padding: 20px;
       transition: transform 0.3s, background-color 0.3s;
+    }
+
+    .tile-title {
+      font-size: 18px;
+      margin: 0;
+    }
+
+    .flex-item:hover {
+      transform: scale(1.05);
+      background-color: #4f2b4f; 
+    }
+
+    .flex-item:hover .tile {
+      background-color: #fc0000; 
+    }
+
+    .form-flex-item:hover {
+      transform: scale(1.05);
     }
 
     .tile-title {
@@ -83,13 +102,13 @@
   <div class="container mt-5">
     <div class="row justify-content-center">
       <div class="col-md-6">
-        <div class="form-flex-container">
-          <div class="form-flex-item red">
+        <form>
+          <div class="form-flex-container">
+            <div class="form-flex-item red">
               <h2 class="tile-title">Customer Name</h2>
               <br />
               <input type="text" id="customerName" name="customerName" [(ngModel)]="customerName" required #customerNameInput="ngModel">
-              <div class="error-message" *ngIf="customerNameInput.invalid && (customerNameInput.dirty || customerNameInput.touched)">
-</div>
+              <div class="error-message" *ngIf="customerNameInput.invalid && (customerNameInput.dirty || customerNameInput.touched)"></div>
             </div>
             <div class="form-flex-item blue">
               <h2 class="tile-title">Account Status</h2>
@@ -98,23 +117,21 @@
                 <option value="Existing">Existing Customer</option>
               </select>
             </div>
-  
-          <div class="form-flex-item green">
-            <h2 class="tile-title">Quote Name</h2>
-            <input type="text" id="quoteName" name="quoteName" [(ngModel)]="quoteName" required #quoteNameInput="ngModel">
-            <div class="error-message" *ngIf="quoteNameInput.invalid && (quoteNameInput.dirty || quoteNameInput.touched)">
-
-              </div>
+            <div class="form-flex-item green">
+              <h2 class="tile-title">Quote Name</h2>
+              <input type="text" id="quoteName" name="quoteName" [(ngModel)]="quoteName" required #quoteNameInput="ngModel">
+              <div class="error-message" *ngIf="quoteNameInput.invalid && (quoteNameInput.dirty || quoteNameInput.touched)"></div>
+            </div>
+            <div class="form-flex-item orange">
+              <h2 class="tile-title">Quote Owner</h2>
+              <input type="text" id="quoteOwner" name="quoteOwner" [(ngModel)]="quoteOwner" required #quoteOwnerInput="ngModel">
+              <div class="error-message" *ngIf="quoteOwnerInput.invalid && (quoteOwnerInput.dirty || quoteOwnerInput.touched)"></div>
+            </div>
           </div>
-          <div class="form-flex-item orange">
-            <h2 class="tile-title">Quote Owner</h2>
-            <input type="text" id="quoteOwner" name="quoteOwner" [(ngModel)]="quoteOwner" required #quoteOwnerInput="ngModel">
-            <div class="error-message" *ngIf="quoteOwnerInput.invalid && (quoteOwnerInput.dirty || quoteOwnerInput.touched)">
-</div>
-        </div>
+        </form>
       </div>
     </div>
-  </div>
+  
   <br />
   <div class="button-container">
     <div class="button-item">
